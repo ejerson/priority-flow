@@ -11,11 +11,16 @@ import android.widget.TextView;
 import com.eb.grow.priorityflow.fragments.CalendarTrackerFragment;
 import com.eb.grow.priorityflow.fragments.GoalsFragment;
 import com.eb.grow.priorityflow.fragments.PrioritySlotFragment;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class PriorityActivity extends AppCompatActivity
     implements CalendarTrackerFragment.OnFragmentInteractionListener,
       GoalsFragment.OnFragmentInteractionListener,
       PrioritySlotFragment.OnFragmentInteractionListener {
+
+    // TODO Create RecylerView for PriorityFragment
+    // TODO Create DatePicker for CalendarFragment
+    // TODO Create RecyclerView for GoalsFragment
 
   FragmentManager manager = getSupportFragmentManager();
 
@@ -26,7 +31,9 @@ public class PriorityActivity extends AppCompatActivity
   GoalsFragment goalsFragment = (GoalsFragment) manager
       .findFragmentById(R.id.fragment_container);
 
+
   private TextView mTextMessage;
+  private FirebaseAnalytics mFBAnalytics;
 
   private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
       = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -60,7 +67,11 @@ public class PriorityActivity extends AppCompatActivity
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_priority);
 
-
+    if (priorityFragment == null) {
+        priorityFragment = new PrioritySlotFragment();
+        manager.beginTransaction().replace(R.id.fragment_container, priorityFragment)
+                .addToBackStack("Priority Slot").commit();
+    }
     BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
     navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
   }
