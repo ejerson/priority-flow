@@ -12,6 +12,7 @@ import com.eb.grow.priorityflow.fragments.CalendarTrackerFragment;
 import com.eb.grow.priorityflow.fragments.GoalsFragment;
 import com.eb.grow.priorityflow.fragments.PrioritySlotFragment;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class PriorityActivity extends AppCompatActivity
     implements CalendarTrackerFragment.OnFragmentInteractionListener,
@@ -34,6 +35,12 @@ public class PriorityActivity extends AppCompatActivity
 
   private TextView mTextMessage;
   private FirebaseAnalytics mFBAnalytics;
+
+    /**
+     * Auth members
+     */
+  private FirebaseAuth mFBAuth;
+  private FirebaseAuth.AuthStateListener mAuthListener;
 
   private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
       = new BottomNavigationView.OnNavigationItemSelectedListener() {
