@@ -85,6 +85,6 @@ public class PriorityActivity extends AppCompatActivity
 
   @Override
   public void onFragmentInteraction(Uri uri) {
-    // TODO What can I do with this method?
+    // Do nothing
   }
 }

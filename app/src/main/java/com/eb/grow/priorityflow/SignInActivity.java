@@ -46,10 +46,10 @@ public class SignInActivity extends AppCompatActivity
         etEmail = (EditText)findViewById(R.id.etEmailAddr);
         etPass = (EditText)findViewById(R.id.etPassword);
 
-        // TODO: Get a reference to the Firebase auth object
+        // Get a reference to the Firebase auth object
         mAuth = FirebaseAuth.getInstance();
 
-        // TODO: Attach a new AuthListener to detect sign in and out
+        // Attach a new AuthListener to detect sign in and out
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -74,14 +74,14 @@ public class SignInActivity extends AppCompatActivity
     @Override
     public void onStart() {
         super.onStart();
-        // TODO: add the AuthListener
+        // Add the AuthListener
         mAuth.addAuthStateListener(mAuthListener);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        // TODO: Remove the AuthListener
+        // Remove the AuthListener
         if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
         }
@@ -145,7 +145,7 @@ public class SignInActivity extends AppCompatActivity
         String email = etEmail.getText().toString();
         String password = etPass.getText().toString();
 
-        // TODO: sign the user in with email and password credentials
+        // Sign the user in with email and password credentials
         mAuth.signInWithEmailAndPassword(email,password)
             .addOnCompleteListener(this,
                 new OnCompleteListener<AuthResult>() {
@@ -186,7 +186,7 @@ public class SignInActivity extends AppCompatActivity
     }
 
     private void signUserOut() {
-        // TODO: sign the user out
+        // Signs the user out
         mAuth.signOut();
         updateStatus();
     }
@@ -198,7 +198,7 @@ public class SignInActivity extends AppCompatActivity
         String email = etEmail.getText().toString();
         String password = etPass.getText().toString();
 
-        // TODO: Create the user account
+        // Create the user account
         mAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this,
                 new OnCompleteListener<AuthResult>() {
